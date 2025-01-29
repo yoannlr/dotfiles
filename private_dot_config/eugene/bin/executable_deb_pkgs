@@ -1,0 +1,20 @@
+#!/bin/sh
+
+action="$1"
+pkgName="$2"
+pkgURL="$3"
+
+case "$action" in
+	"add")
+		file="/tmp/${pkgName}.deb"
+		wget -O "$file" "$pkgURL"
+		sudo apt install "$file"
+		rm "$file"
+	;;
+	"remove")
+		sudo apt purge --autoremove "$pkgName"
+	;;
+	*)
+	echo "Unknown action $action"
+	exit 1
+esac

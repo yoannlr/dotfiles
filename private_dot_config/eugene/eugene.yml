@@ -1,0 +1,39 @@
+handlers:
+  - name: debloat
+    remove: sudo apt purge --autoremove %s
+    multiple: true
+  - name: apt_repo
+    setup: sudo apt install wget
+    add: ${EUGENE_REPO}/bin/apt_repo add %s
+    remove: ${EUGENE_REPO}/bin/apt_repo remove %s
+    run_after_switch: sudo apt update
+  - name: apt_pkgs
+    sync: sudo apt update
+    add: sudo apt install %s
+    remove: sudo apt purge --autoremove %s
+    upgrade: sudo apt full-upgrade
+    multiple: true
+    run_before_switch: echo "$(dpkg -l | wc -l) packages on system"
+    run_after_switch: echo "now $(dpkg -l | wc -l) packages on system"
+  - name: deb_pkgs
+    setup: sudo apt install wget
+    add: ${EUGENE_REPO}/bin/deb_pkgs add %s
+    remove: ${EUGENE_REPO}/bin/deb_pkgs remove %s
+  - name: flatpak
+    setup: sudo apt install flatpak && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    add: flatpak install flathub --noninteractive %s
+    remove: flatpak uninstall --noninteractive %s
+    multiple: false
+    run_after_switch: flatpak uninstall --unused --noninteractive
+  - name: user_services
+    add: systemctl --user enable --now %s || true
+    remove: systemctl --user disable --now %s || true
+  - name: gsettings_values
+    add: ${EUGENE_REPO}/bin/gsettings_values set %s
+    remove: ${EUGENE_REPO}/bin/gsettings_values unset %s
+  - name: dconf_values
+    add: ${EUGENE_REPO}/bin/dconf_values set %s
+    remove: ${EUGENE_REPO}/bin/dconf_values unset %s
+  - name: doundo
+    add: ${EUGENE_REPO}/bin/doundo do %s
+    remove: ${EUGENE_REPO}/bin/doundo undo %s

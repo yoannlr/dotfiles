@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# some help from https://unix.stackexchange.com/a/707840
+
+add() {
+	EXTENSION_ID="$1"
+	VERSION_TAG=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=${EXTENSION_ID}" | jq ".extensions[] | select(.uuid == \"${EXTENSION_ID}\") | .shell_version_map | to_entries[] | select(.key | startswith(\"${GNOME_VERSION}\")) | .value.pk" | sort -n | tail -n 1)
+
+	echo "Installing extension $EXTENSION_ID version $VERSION_TAG"
+
+	wget -O "/tmp/${EXTENSION_ID}.zip" "https://extensions.gnome.org/download-extension/${EXTENSION_ID}.shell-extension.zip?version_tag=$VERSION_TAG"
+
+	gnome-extensions install --force "/tmp/${EXTENSION_ID}.zip"
+
+	if ! gnome-extensions list | grep --quiet "${EXTENSION_ID}"; then
+		busctl --user call org.gnome.Shell.Extensions /org/gnome/Shell/Extensions org.gnome.Shell.Extensions InstallRemoteExtension s "${EXTENSION_ID}"
+	fi
+
+	gnome-extensions enable "${EXTENSION_ID}"
+
+	rm "/tmp/${EXTENSION_ID}.zip"
+	rm /tmp/*.shell-extension.zip
+	echo "Extension $EXTENSION_ID installed"
+}
+
+remove() {
+	EXTENSION_ID="$1"
+	gnome-extensions uninstall "$1"
+	echo "Removed extension $EXTENSION_ID"
+}
+
+if [ "$1" = "add" ]; then
+	add "$2"
+elif [ "$1" = "remove" ]; then
+	remove "$2"
+else
+	echo "Unknown verb: '$1'"
+fi

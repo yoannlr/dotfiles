@@ -1,0 +1,33 @@
+#!/bin/sh
+
+action="$1"
+repoName="$2"
+repoConf="$3"
+repoKeyURL="$4"
+repoKeyType="$5"
+
+keyFile="/etc/apt/trusted.gpg.d/${repoName}"
+if [ "$repoKeyType" = "armored" ]; then
+	keyFile="${keyFile}.gpg"
+else
+	keyFile="${keyFile}.asc"
+fi
+
+repoFile="/etc/apt/sources.list.d/${repoName}.list"
+
+echo "keyFile for $repoName is $keyFile"
+echo "repoFile for $repoName is $repoFile"
+
+case "$action" in
+	"add")
+		wget -q -O - "$repoKeyURL" | sudo tee "$keyFile" > /dev/null
+		echo "$repoConf" | sudo tee "$repoFile" > /dev/null
+	;;
+	"remove")
+		sudo rm -v "$repoFile" "$keyFile"
+	;;
+	*)
+		echo "Unknown action $action"
+		exit 1
+	;;
+esac

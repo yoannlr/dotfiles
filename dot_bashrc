@@ -1,0 +1,60 @@
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# history
+HISTSIZE=
+HISTFILESIZE=
+HISTCONTROL=ignoreboth
+
+# history from multiple sessions at the same time
+shopt -s histappend
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS
+shopt -s checkwinsize
+
+# trailing slash after symlink directories
+bind 'set mark-symlinked-directories on'
+
+# allow cycle through completion
+bind TAB:menu-complete
+bind 'set show-all-if-ambiguous on'
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+fi
+
+# more aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# prompt
+promptGreen='\[\033[01;32m\]'
+promptBlue='\[\033[01;34m\]'
+promptReset='\[\033[00m\]'
+export PS1="${promptBlue}\W${promptReset}$ "
+echo "${USER}@$(hostname) - $(date)"
+unset promptGreen promptBlue promptReset
+
+showstatus() {
+	local code="$?"
+	if [ $code -ne 0 ]; then
+		echo "exited with code $code"
+	fi
+}
+export PROMPT_COMMAND=showstatus
+
+# other
+export EDITOR=vim

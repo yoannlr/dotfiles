@@ -1,0 +1,23 @@
+<kdenlivetitle duration="150" LC_NUMERIC="C" width="1920" height="1080" out="150">
+ <item type="QGraphicsRectItem" z-index="2">
+  <position x="50" y="0">
+   <transform zoom="100">1,0,0,0,1,0,0,0,1</transform>
+  </position>
+  <content brushcolor="255,255,255,255" pencolor="0,0,0,255" penwidth="0" rect="0,0,6,140"/>
+ </item>
+ <item type="QGraphicsRectItem" z-index="1">
+  <position x="30" y="110">
+   <transform zoom="100">1,0,0,0,1,0,0,0,1</transform>
+  </position>
+  <content brushcolor="255,255,255,255" pencolor="0,0,0,255" penwidth="0" rect="0,0,300,6"/>
+ </item>
+ <item type="QGraphicsTextItem" z-index="0">
+  <position x="80" y="30">
+   <transform>1,0,0,0,1,0,0,0,1</transform>
+  </position>
+  <content line-spacing="0" shadow="1;#c8000000;6;5;5" font-underline="0" box-height="72" font="Minecraft" letter-spacing="0" font-pixel-size="60" font-italic="0" typewriter="0;2;1;0;0" alignment="1" font-weight="50" box-width="1840" font-color="255,255,255,255">%s</content>
+ </item>
+ <startviewport rect="0,0,1920,1080"/>
+ <endviewport rect="0,0,1920,1080"/>
+ <background color="0,0,0,0"/>
+</kdenlivetitle>

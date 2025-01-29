@@ -1,0 +1,21 @@
+#!/bin/sh
+
+action="$1"
+schema="$2"
+key="$3"
+value="$4"
+
+case "$action" in
+	"set")
+		echo "set $schema $key to $value" 
+		gsettings set "$schema" "$key" "$value"
+	;;
+	"unset")
+		echo "reset $schema $key"
+		gsettings reset "$schema" "$key"
+	;;
+	*)
+		echo "Unknown action $action"
+		exit 1
+	;;
+esac

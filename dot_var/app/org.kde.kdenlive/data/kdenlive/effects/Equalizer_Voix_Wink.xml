@@ -1,0 +1,54 @@
+<effect type="customAudio" tag="ladspa.2141" id="Equalizer_Voix_Wink">
+ <name>Equalizer_Voix_Wink</name>
+ <parameter type="constant" name="0" decimals="3" max="20.000000" min="-50.000000" value="0" default="0.000000">
+  <name>Band 1 Gain [dB]</name>
+ </parameter>
+ <parameter type="constant" name="1" decimals="3" max="20.000000" min="-50.000000" value="0" default="0.000000">
+  <name>Band 2 Gain [dB]</name>
+ </parameter>
+ <parameter type="constant" name="2" decimals="3" max="20.000000" min="-50.000000" value="-5.97" default="0.000000">
+  <name>Band 3 Gain [dB]</name>
+ </parameter>
+ <parameter type="constant" name="3" decimals="3" max="20.000000" min="-50.000000" value="-7.23" default="0.000000">
+  <name>Band 4 Gain [dB]</name>
+ </parameter>
+ <parameter type="constant" name="4" decimals="3" max="20.000000" min="-50.000000" value="-7.100494" default="0.000000">
+  <name>Band 5 Gain [dB]</name>
+ </parameter>
+ <parameter type="constant" name="5" decimals="3" max="20.000000" min="-50.000000" value="-3.410214" default="0.000000">
+  <name>Band 6 Gain [dB]</name>
+ </parameter>
+ <parameter type="constant" name="6" decimals="3" max="20.000000" min="-50.000000" value="-0.873147" default="0.000000">
+  <name>Band 7 Gain [dB]</name>
+ </parameter>
+ <parameter type="constant" name="7" decimals="3" max="20.000000" min="-50.000000" value="1.202636" default="0.000000">
+  <name>Band 8 Gain [dB]</name>
+ </parameter>
+ <parameter type="constant" name="8" decimals="3" max="280.000000" min="40.000000" value="100" default="100.000000">
+  <name>Band 1 Freq [Hz]</name>
+ </parameter>
+ <parameter type="constant" name="9" decimals="3" max="500.000000" min="100.000000" value="200" default="200.000000">
+  <name>Band 2 Freq [Hz]</name>
+ </parameter>
+ <parameter type="constant" name="10" decimals="3" max="1000.000000" min="200.000000" value="400" default="400.000000">
+  <name>Band 3 Freq [Hz]</name>
+ </parameter>
+ <parameter type="constant" name="11" decimals="3" max="2800.000000" min="400.000000" value="1000" default="1000.000000">
+  <name>Band 4 Freq [Hz]</name>
+ </parameter>
+ <parameter type="constant" name="12" decimals="3" max="5000.000000" min="1000.000000" value="3000" default="3000.000000">
+  <name>Band 5 Freq [Hz]</name>
+ </parameter>
+ <parameter type="constant" name="13" decimals="3" max="9000.000000" min="3000.000000" value="6000" default="6000.000000">
+  <name>Band 6 Freq [Hz]</name>
+ </parameter>
+ <parameter type="constant" name="14" decimals="3" max="18000.000000" min="6000.000000" value="12000" default="12000.000000">
+  <name>Band 7 Freq [Hz]</name>
+ </parameter>
+ <parameter type="constant" name="15" decimals="3" max="20000.000000" min="10000.000000" value="15000" default="15000.000000">
+  <name>Band 8 Freq [Hz]</name>
+ </parameter>
+ <parameter type="constant" name="wetness" decimals="3" max="1.000000" min="0.000000" value="1" default="1.000000">
+  <name>Wet/Dry</name>
+ </parameter>
+</effect>

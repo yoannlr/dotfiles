@@ -1,0 +1,20 @@
+#!/bin/sh
+
+action="$1"
+path="$2"
+value="$3"
+
+case "$action" in
+	"set")
+		echo "set $path to $value" 
+		dconf write "$path" "$value"
+	;;
+	"unset")
+		echo "reset $path"
+		dconf reset "$path"
+	;;
+	*)
+		echo "Unknown action $action"
+		exit 1
+	;;
+esac

@@ -1,0 +1,34 @@
+org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+org.gnome.desktop.wm.preferences mouse-button-modifier '<Super>'
+org.gnome.desktop.wm.preferences resize-with-right-button true
+
+org.gnome.mutter attach-modal-dialogs false
+org.gnome.mutter center-new-windows true
+org.gnome.mutter auto-maximize false
+org.gnome.mutter check-alive-timeout 60000
+
+org.gnome.desktop.peripherals.touchpad natural-scroll false
+org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+# app shortcuts
+org.gnome.settings-daemon.plugins.media-keys home "['<Super>x']"
+org.gnome.settings-daemon.plugins.media-keys calculator "['<Super>c']"
+org.gnome.settings-daemon.plugins.media-keys www "['<Super>w']"
+
+# close windows with super+q
+org.gnome.desktop.wm.keybindings close "['<Super>q']"
+
+# alt-tab = switch windows, not apps
+org.gnome.desktop.wm.keybindings switch-applications "[]"
+org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
+org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
+
+# system monitor
+org.gnome.gnome-system-monitor show-whose-processes all
+org.gnome.gnome-system-monitor show-dependencies true
+org.gnome.gnome-system-monitor current-tab resources
+org.gnome.gnome-system-monitor show-all-fs true
+
+# no auto suspend
+org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type nothing

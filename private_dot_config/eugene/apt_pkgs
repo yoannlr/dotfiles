@@ -20,3 +20,5 @@ tmux
 zoxide
 mpv
 tree
+inotify-tools
+rsync

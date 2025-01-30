@@ -22,3 +22,7 @@ mpv
 tree
 inotify-tools
 rsync
+ncdu
+bash-completion
+fzy
+neovim

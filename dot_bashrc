@@ -11,6 +11,13 @@ HISTCONTROL=ignoreboth
 # history from multiple sessions at the same time
 shopt -s histappend
 
+hst() {
+	cmd=$(history | cut -c 8- | sort --reverse | fzy)
+	echo $cmd
+	$cmd
+}
+bind '"\C-n":"hst\C-m"'
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS
 shopt -s checkwinsize
@@ -40,6 +47,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# bash competion
+source /etc/bash_completion
+
 # prompt
 promptGreen='\[\033[01;32m\]'
 promptBlue='\[\033[01;34m\]'
@@ -58,3 +68,4 @@ export PROMPT_COMMAND=showstatus
 
 # other
 export EDITOR=vim
+export MANPAGER='nvim +Man!'

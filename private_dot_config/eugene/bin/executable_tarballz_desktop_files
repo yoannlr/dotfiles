@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ -d "/opt/intellij" ] && [ ! -f "/usr/share/applications/intellij.desktop" ]; then
+	latestIntellij="$(ls -d /opt/intellij/idea* | tail -n 1)"
+	if [ -e "/opt/intellij/latest" ]; then
+		sudo rm "/opt/intellij/latest"
+	fi
+	sudo ln -s "$latestIntellij" "/opt/intellij/latest"
+	desktopFile="/usr/share/applications/intellij.desktop"
+	echo "[Desktop Entry]" | sudo tee "$desktopFile"
+	echo "Type=Application" | sudo tee -a "$desktopFile"
+	echo "Type=Application" | sudo tee -a "$desktopFile"
+	echo "Terminal=false" | sudo tee -a "$desktopFile"
+	echo "Categories=Development;" | sudo tee -a "$desktopFile"
+	echo "Name=IntelliJ IDEA" | sudo tee -a "$desktopFile"
+	echo "Exec=/opt/intellij/latest/bin/idea.sh" | sudo tee -a "$desktopFile"
+	echo "Icon=/opt/intellij/latest/bin/idea.svg" | sudo tee -a "$desktopFile"
+fi

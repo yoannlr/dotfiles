@@ -34,6 +34,6 @@ handlers:
   - name: dconf_values
     add: ${EUGENE_REPO}/bin/dconf_values set %s
     remove: ${EUGENE_REPO}/bin/dconf_values unset %s
-  - name: doundo
-    add: ${EUGENE_REPO}/bin/doundo do %s
-    remove: ${EUGENE_REPO}/bin/doundo undo %s
+  - name: tarballz
+    add: ${EUGENE_REPO}/bin/tarballz add %s
+    remove: ${EUGENE_REPO}/bin/tarballz remove %s

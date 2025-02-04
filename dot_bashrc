@@ -54,9 +54,20 @@ source /etc/bash_completion
 promptGreen='\[\033[01;32m\]'
 promptBlue='\[\033[01;34m\]'
 promptReset='\[\033[00m\]'
-export PS1="${promptBlue}\W${promptReset}$ "
+promptYellow='\[\033[01;33m\]'
+source /usr/lib/git-core/git-sh-prompt
+export PS1="${promptGreen}\u${promptReset}:${promptBlue}\W${promptYellow}\$(GIT_PS1_SHOWUNTRACKEDFILES=1 GIT_PS1_SHOWDIRTYSTATE=1 __git_ps1)${promptReset}$ "
 echo "${USER}@$(hostname) - $(date)"
-unset promptGreen promptBlue promptReset
+unset promptGreen promptBlue promptReset promptYellow
+
+# make sur the window title is updated if running and xterm
+case "$TERM" in
+xterm*|rxvt*)
+	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+	;;
+*)
+	;;
+esac
 
 showstatus() {
 	local code="$?"
@@ -69,3 +80,10 @@ export PROMPT_COMMAND=showstatus
 # other
 export EDITOR=vim
 export MANPAGER='nvim +Man!'
+
+# lfcd
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    command cd "$(command lf -print-last-dir "$@")"
+}
+bind '"\C-o":"lfcd\C-m"'

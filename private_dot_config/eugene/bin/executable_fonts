@@ -1,0 +1,25 @@
+#!/bin/sh
+
+action="$1"
+name="$2"
+download="$3"
+
+case "$action" in
+	"add")
+		tempfile="/tmp/${name}.zip"
+		wget -O "$tempfile" "$download"
+		if [ ! -d "/usr/share/fonts/${name}" ]; then
+			sudo mkdir "/usr/share/fonts/${name}"
+		fi
+		sudo unzip -d "/usr/share/fonts/${name}" "$tempfile"
+		rm "$tempfile"
+	;;
+	"remove")
+		if [ -s "$name" ]; then
+			exit 0
+		fi
+		if [ -d "/usr/share/fonts/${name}" ]; then
+			sudo rm -r "/usr/share/fonts/${name}"
+		fi
+	;;
+esac

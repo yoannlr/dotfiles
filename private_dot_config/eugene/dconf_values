@@ -1,5 +1,5 @@
 # extension configurations
-/org/gnome/shell/extensions/caffeine/show-indicator "'never'"
+/org/gnome/shell/extensions/caffeine/show-indicator "'only-active'"
 /org/gnome/shell/extensions/notification-banner-reloaded/anchor-horizontal 1 # right
 /org/gnome/shell/extensions/notification-banner-reloaded/animation-direction 1 # slide from right
 /org/gnome/shell/extensions/just-perfection/activities-button false # no "activities" button (less clutter on top bar)

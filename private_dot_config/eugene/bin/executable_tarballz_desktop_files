@@ -13,6 +13,6 @@ if [ -d "/opt/intellij" ] && [ ! -f "/usr/share/applications/intellij.desktop" ]
 	echo "Terminal=false" | sudo tee -a "$desktopFile"
 	echo "Categories=Development;" | sudo tee -a "$desktopFile"
 	echo "Name=IntelliJ IDEA" | sudo tee -a "$desktopFile"
-	echo "Exec=/opt/intellij/latest/bin/idea.sh" | sudo tee -a "$desktopFile"
+	echo "Exec=/opt/intellij/latest/bin/idea" | sudo tee -a "$desktopFile"
 	echo "Icon=/opt/intellij/latest/bin/idea.svg" | sudo tee -a "$desktopFile"
 fi

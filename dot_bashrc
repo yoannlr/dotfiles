@@ -33,6 +33,8 @@ bind 'set show-all-if-ambiguous on'
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias ls='ls --color=auto'
+	alias dir='dir --color=auto'
+	alias vdir='vdir --color=auto'
 	alias grep='grep --color=auto'
 	alias fgrep='fgrep --color=auto'
 	alias egrep='egrep --color=auto'
@@ -69,13 +71,40 @@ xterm*|rxvt*)
 	;;
 esac
 
-showstatus() {
-	local code="$?"
+# record the time it takes for each command
+start_time=0
+precommand() {
+	# prevent recording promptcommand
+	if [ -z "$on_prompt" ]; then
+		return
+	fi
+	unset on_prompt
+
+	start_time=$(date '+%s.%3N')
+}
+trap "precommand" DEBUG
+
+# and give some info about the last running command
+first_prompt=1
+postcommand() {
+	local code=$?
+	on_prompt=1
+
+	if [ -n "$first_prompt" ]; then
+		unset first_prompt
+		return
+	fi
+
 	if [ $code -ne 0 ]; then
 		echo "exited with code $code"
 	fi
+	end_time=$(date '+%s.%3N')
+	delta=$(echo "$end_time - $start_time" | bc)
+	if [ "$(echo "$delta > 0.2" | bc)" -eq 1 ]; then
+		echo "took ${delta}s"
+	fi
 }
-export PROMPT_COMMAND=showstatus
+PROMPT_COMMAND="postcommand"
 
 # other
 export EDITOR=vim
@@ -86,4 +115,5 @@ lfcd () {
     # `command` is needed in case `lfcd` is aliased to `lf`
     command cd "$(command lf -print-last-dir "$@")"
 }
+alias lf=lfcd
 bind '"\C-o":"lfcd\C-m"'

@@ -19,6 +19,7 @@ handlers:
     setup: sudo apt install wget
     add: ${EUGENE_REPO}/bin/deb_pkgs add %s
     remove: ${EUGENE_REPO}/bin/deb_pkgs remove %s
+    run_after_switch: ${EUGENE_REPO}/bin/deb_pkgs_override
   - name: flatpak
     setup: sudo apt install flatpak && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     add: flatpak install flathub --noninteractive %s

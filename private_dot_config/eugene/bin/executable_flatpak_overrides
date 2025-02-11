@@ -2,7 +2,7 @@
 
 flatpak uninstall --unused --noninteractive
 
-if flatpak list | grep -q 'com.modrinth.ModrinthApp'; then
-	# fixes modrinth not starting at all
-	flatpak override --user --env=WEBKIT_DISABLE_DMABUF_RENDERER=1 com.modrinth.ModrinthApp
-fi
+#if flatpak list | grep -q 'com.modrinth.ModrinthApp'; then
+#	# fixes modrinth not starting at all
+#	flatpak override --user --env=WEBKIT_DISABLE_DMABUF_RENDERER=1 com.modrinth.ModrinthApp
+#fi

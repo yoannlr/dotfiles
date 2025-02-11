@@ -24,8 +24,10 @@ inotify-tools
 rsync
 ncdu
 bash-completion
-fzy
+fzf
 neovim
 codium
 bind9-dnsutils
 tcpdump
+netcat-openbsd
+strace

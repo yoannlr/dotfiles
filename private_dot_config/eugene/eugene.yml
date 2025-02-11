@@ -24,7 +24,7 @@ handlers:
     add: flatpak install flathub --noninteractive %s
     remove: flatpak uninstall --noninteractive %s
     multiple: false
-    run_after_switch: flatpak uninstall --unused --noninteractive
+    run_after_switch: ${EUGENE_REPO}/bin/flatpak_overrides
   - name: user_services
     add: systemctl --user enable --now %s || true
     remove: systemctl --user disable --now %s || true

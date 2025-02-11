@@ -11,13 +11,6 @@ HISTCONTROL=ignoreboth
 # history from multiple sessions at the same time
 shopt -s histappend
 
-hst() {
-	cmd=$(history | cut -c 8- | sort --reverse | fzy)
-	echo $cmd
-	$cmd
-}
-bind '"\C-n":"hst\C-m"'
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS
 shopt -s checkwinsize
@@ -117,3 +110,7 @@ lfcd () {
 }
 alias lf=lfcd
 bind '"\C-o":"lfcd\C-m"'
+
+# better history with fzf
+source /usr/share/doc/fzf/examples/key-bindings.bash
+# ^R = better history, ^T = insert filename, alt-C = interactive cd

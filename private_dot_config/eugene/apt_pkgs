@@ -31,3 +31,5 @@ bind9-dnsutils
 tcpdump
 netcat-openbsd
 strace
+python3-venv
+go-md2man

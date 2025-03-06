@@ -1,0 +1,47 @@
+{
+	"policies": {
+		"Extensions": {
+			"Install": [
+				"https://addons.mozilla.org/firefox/downloads/file/4412673/ublock_origin-1.62.0.xpi",
+				"https://addons.mozilla.org/firefox/downloads/file/4216095/istilldontcareaboutcookies-1.1.4.xpi",
+				"https://addons.mozilla.org/firefox/downloads/file/4392113/decentraleyes-3.0.0.xpi",
+				"https://addons.mozilla.org/firefox/downloads/file/4432106/clearurls-1.27.3.xpi",
+				"https://addons.mozilla.org/firefox/downloads/file/4058188/url_to_qrcode-1.1.xpi",
+				"https://addons.mozilla.org/firefox/downloads/file/4440363/bitwarden_password_manager-2025.2.0.xpi"
+			]
+		},
+		"DisablePocket": true,
+		"DisableTelemetry": true,
+		"DontCheckDefaultBrowser": true,
+		"EnableTrackingProtection": {
+			"Value": true,
+			"Cryptomining": true,
+			"Fingerprinting": true,
+			"EmailTracking": true
+		},
+		"Homepage": {
+			"StartPage": "homepage"
+		},
+		"FirefoxHome": {
+			"Search": true,
+			"TopSites": false,
+			"SponsoredTopSites": false,
+			"Highlights": false,
+			"Pocket": false,
+			"SponsoredPocket": false,
+			"Snippets": false
+		},
+		"SearchEngines": {
+			"Default": "DuckDuckGo"
+		},
+		"Bookmarks": [
+			{ "Title": "YouTube", "URL": "https://www.youtube.com/results?search_query=%s", "keyword": "yt" }
+		],
+		"NoDefaultBookmarks": true,
+		"EncryptedMediaExtensions": {
+			"Enabled": true
+		},
+		"OfferToSaveLogins": false,
+		"PasswordManagerEnabled": false
+	}
+}

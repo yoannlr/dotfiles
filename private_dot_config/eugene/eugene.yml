@@ -14,7 +14,7 @@ handlers:
     upgrade: sudo apt full-upgrade
     multiple: true
     run_before_switch: echo "$(dpkg -l | wc -l) packages on system"
-    run_after_switch: echo "now $(dpkg -l | wc -l) packages on system"
+    run_after_switch: ${EUGENE_REPO}/bin/apt_pkgs
   - name: deb_pkgs
     setup: sudo apt install wget
     add: ${EUGENE_REPO}/bin/deb_pkgs add %s

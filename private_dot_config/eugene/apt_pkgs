@@ -33,3 +33,9 @@ netcat-openbsd
 strace
 python3-venv
 go-md2man
+wireshark
+adwaita-qt
+qt5-gtk-platformtheme
+qt6-gtk-platformtheme
+adwaita-qt6
+qgnomeplatform-qt5 

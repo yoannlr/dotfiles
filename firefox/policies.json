@@ -7,7 +7,8 @@
 				"https://addons.mozilla.org/firefox/downloads/file/4392113/decentraleyes-3.0.0.xpi",
 				"https://addons.mozilla.org/firefox/downloads/file/4432106/clearurls-1.27.3.xpi",
 				"https://addons.mozilla.org/firefox/downloads/file/4058188/url_to_qrcode-1.1.xpi",
-				"https://addons.mozilla.org/firefox/downloads/file/4440363/bitwarden_password_manager-2025.2.0.xpi"
+				"https://addons.mozilla.org/firefox/downloads/file/4440363/bitwarden_password_manager-2025.2.0.xpi",
+				"https://addons.mozilla.org/firefox/downloads/file/4263531/youtube_recommended_videos-1.6.7.xpi"
 			]
 		},
 		"DisablePocket": true,

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "now $(dpkg -l | wc -l) packages on system"
+
+if dpkg -l | grep -qw wireshark; then
+	sudo usermod -aG wireshark "$(whoami)"
+fi

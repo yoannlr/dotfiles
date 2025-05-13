@@ -1,5 +1,5 @@
 #!/bin/sh
 
-if dpkg -l | grep -q modrinth-app; then
+if dpkg -l | grep -qw modrinth-app; then
 	sudo sed -iEe 's/Exec=.*/Exec=sh -c "WEBKIT_DISABLE_DMABUF_RENDERER=1 ModrinthApp"/g' '/usr/share/applications/Modrinth App.desktop'
 fi

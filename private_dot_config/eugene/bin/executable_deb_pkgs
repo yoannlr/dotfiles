@@ -7,9 +7,11 @@ pkgURL="$3"
 case "$action" in
 	"add")
 		file="/tmp/${pkgName}.deb"
-		wget -O "$file" "$pkgURL"
-		sudo apt install "$file"
-		rm "$file"
+		if ! dpkg -l | grep -qw "$pkgName"; then
+			wget -O "$file" "$pkgURL"
+			sudo apt install "$file"
+			rm "$file"
+		fi
 	;;
 	"remove")
 		sudo apt purge --autoremove "$pkgName"

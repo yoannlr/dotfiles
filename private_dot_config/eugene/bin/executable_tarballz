@@ -7,13 +7,15 @@ remove="$4"
 
 case "$action" in
 	"add")
-		tempfile="/tmp/eugene-temp.tar.gz"
-		wget -O "$tempfile" "$download"
-		if [ ! -d "$extract" ]; then
-			sudo mkdir -vp "$extract"
+		if [ ! -e "$remove" ]; then
+			tempfile="/tmp/eugene-temp.tar.gz"
+			wget -O "$tempfile" "$download"
+			if [ ! -d "$extract" ]; then
+				sudo mkdir -vp "$extract"
+			fi
+			sudo tar -C "$extract" -x -f "$tempfile"
+			rm "$tempfile"
 		fi
-		sudo tar -C "$extract" -x -f "$tempfile"
-		rm "$tempfile"
 	;;
 	"remove")
 		sudo rm -vr "$remove"

@@ -5,3 +5,11 @@ echo "now $(dpkg -l | wc -l) packages on system"
 if dpkg -l | grep -qw wireshark; then
 	sudo usermod -aG wireshark "$(whoami)"
 fi
+
+if dpkg -l | grep -qw docker-ce; then
+	sudo usermod -aG docker "$(whoami)"
+fi
+
+if dpkg -l | grep -qw qtractor; then
+	sudo sed -iEe 's/Exec=.*/Exec=pw-jack qtractor/g' '/usr/share/applications/org.rncbc.qtractor.desktop'
+fi

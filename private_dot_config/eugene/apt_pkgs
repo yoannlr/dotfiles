@@ -39,3 +39,5 @@ qt5-gtk-platformtheme
 qt6-gtk-platformtheme
 adwaita-qt6
 qgnomeplatform-qt5 
+gromit-mpx
+python3-pip

@@ -10,6 +10,11 @@ org.gnome.mutter check-alive-timeout 60000
 org.gnome.desktop.peripherals.touchpad natural-scroll false
 org.gnome.desktop.peripherals.touchpad tap-to-click true
 
+org.gnome.settings-daemon.plugins.color night-light-enabled true
+
+# disable suspend
+org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+
 # app shortcuts
 org.gnome.settings-daemon.plugins.media-keys home "['<Super>x']"
 org.gnome.settings-daemon.plugins.media-keys calculator "['<Super>c']"
@@ -17,6 +22,9 @@ org.gnome.settings-daemon.plugins.media-keys www "['<Super>w']"
 
 # close windows with super+q
 org.gnome.desktop.wm.keybindings close "['<Super>q']"
+
+# fullscreen window with super+f
+org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 
 # alt-tab = switch windows, not apps
 org.gnome.desktop.wm.keybindings switch-applications "[]"

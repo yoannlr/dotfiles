@@ -6,3 +6,8 @@ flatpak uninstall --unused --noninteractive
 #	# fixes modrinth not starting at all
 #	flatpak override --user --env=WEBKIT_DISABLE_DMABUF_RENDERER=1 com.modrinth.ModrinthApp
 #fi
+
+if [ "$(hostname)" = "anvil" ] && flatpak list | grep -q 'PrismLauncher'; then
+	flatpak override --user --env=__NV_PRIME_RENDER_OFFLOAD=1 org.prismlauncher.PrismLauncher
+	flatpak override --user --env=__GLX_VENDOR_LIBRARY_NAME=nvidia org.prismlauncher.PrismLauncher
+fi

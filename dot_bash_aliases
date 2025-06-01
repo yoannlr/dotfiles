@@ -1,1 +1,3 @@
-alias cclite='flatpak run page.codeberg.JakobDev.CCLite'
+if flatpak list | grep -qw 'page.codeberg.JakobDev.CCLite'; then
+	alias cclite='flatpak run page.codeberg.JakobDev.CCLite'
+fi

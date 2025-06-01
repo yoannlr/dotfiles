@@ -41,3 +41,7 @@ adwaita-qt6
 qgnomeplatform-qt5 
 gromit-mpx
 python3-pip
+qrencode
+zbarcam-gtk
+# generate datamatrix codes
+iec16022

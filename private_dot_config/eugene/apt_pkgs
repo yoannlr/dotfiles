@@ -45,3 +45,6 @@ qrencode
 zbarcam-gtk
 # generate datamatrix codes
 iec16022
+
+# for cclite https
+lua-sec

@@ -1,0 +1,12 @@
+texlive
+texlive-fonts-recommended
+texlive-latex-base
+texlive-latex-recommended
+texlive-fonts-extra
+texlive-font-utils
+texlive-extra-utils
+texlive-formats-extra
+texlive-fonts-extra-links
+texlive-latex-extra
+texlive-lang-french
+texlive-science

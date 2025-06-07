@@ -1,3 +1,4 @@
 "https://github.com/gokcehan/lf/releases/download/r33/lf-linux-amd64.tar.gz" /usr/local/bin /usr/local/bin/lf
 "https://download-cdn.jetbrains.com/idea/ideaIC-2024.3.2.2.tar.gz" /opt/intellij /opt/intellij
 "https://go.dev/dl/go1.24.0.linux-amd64.tar.gz" /usr/local /usr/local/go
+"https://github.com/dimtpap/obs-pipewire-audio-capture/releases/download/1.2.0/linux-pipewire-audio-1.2.0-flatpak-30.tar.gz" "${HOME}/.var/app/com.obsproject.Studio/config/obs-studio/plugins/" "${HOME}/.var/app/com.obsproject.Studio/config/obs-studio/plugins/linux-pipewire-audio" rootless

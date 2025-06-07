@@ -5,19 +5,25 @@ download="$2"
 extract="$3"
 remove="$4"
 
+rootless="$5"
+sudo_user="root"
+if [ "$rootless" = "rootless" ]; then
+	sudo_user="$(whoami)"
+fi
+
 case "$action" in
 	"add")
 		if [ ! -e "$remove" ]; then
 			tempfile="/tmp/eugene-temp.tar.gz"
 			wget -O "$tempfile" "$download"
 			if [ ! -d "$extract" ]; then
-				sudo mkdir -vp "$extract"
+				sudo -u "$sudo_user" mkdir -vp "$extract"
 			fi
-			sudo tar -C "$extract" -x -f "$tempfile"
+			sudo -u "$sudo_user" tar -C "$extract" -x -f "$tempfile"
 			rm "$tempfile"
 		fi
 	;;
 	"remove")
-		sudo rm -vr "$remove"
+		sudo -u "$sudo_user" rm -vr "$remove"
 	;;
 esac

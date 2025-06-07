@@ -38,7 +38,7 @@ handlers:
   - name: tarballz
     add: ${EUGENE_REPO}/bin/tarballz add %s
     remove: ${EUGENE_REPO}/bin/tarballz remove %s
-    run_after_switch: ${EUGENE_REPO}/bin/tarballz_desktop_files
+    run_after_switch: ${EUGENE_REPO}/bin/tarballz_overrides
   - name: fonts
     add: ${EUGENE_REPO}/bin/fonts add %s
     remove: ${EUGENE_REPO}/bin/fonts remove %s

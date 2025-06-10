@@ -24,6 +24,7 @@ handlers:
     setup: sudo apt install flatpak && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     add: flatpak install flathub --noninteractive %s
     remove: flatpak uninstall --noninteractive %s
+    upgrade: flatpak update --noninteractive
     multiple: false
     run_after_switch: ${EUGENE_REPO}/bin/flatpak_overrides
   - name: user_services

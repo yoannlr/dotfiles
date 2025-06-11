@@ -14,7 +14,9 @@ case "$action" in
 		fi
 	;;
 	"remove")
-		sudo apt purge --autoremove "$pkgName"
+		if dpkg -l | grep -qw "$pkgName"; then
+			sudo apt purge --autoremove "$pkgName"
+		fi
 	;;
 	*)
 	echo "Unknown action $action"

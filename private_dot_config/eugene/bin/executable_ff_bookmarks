@@ -1,0 +1,29 @@
+#!/bin/sh
+
+action="$1"
+bookmarkTitle="$2"
+bookmarkURL="$3"
+bookmarkKeyword="$4"
+
+while pgrep -u $(whoami) 'firefox.*'; do
+	echo "Firefox is running. Cant update bookmarks. Please close Firefox."
+	sleep 1
+done
+
+# TODO improve that to handle multiple profiles and flatpak installs
+placesFile="$(find "${HOME}/.mozilla/" -type f -iname 'places.sqlite' | head -n 1)"
+
+if [ "$action" = "add" ]; then
+	placeId=$(sqlite3 "$placesFile" "insert into moz_places (url) values ('${bookmarkURL}') returning id;")
+	sqlite3 "$placesFile" "insert into moz_bookmarks (fk, title) values(${placeId}, '${bookmarkTitle}');"
+	sqlite3 "$placesFile" "insert into moz_keywords (keyword, place_id) values ('${bookmarkKeyword}', ${placeId});"
+elif [ "$action" = "remove" ]; then
+	placeId=$(sqlite3 "$placesFile" "select id from moz_places where url='${bookmarkURL}';")
+	if [ ! -z "$placeId" ]; then
+		sqlite3 "$placesFile" "delete from moz_bookmarks where fk=${placeId};"
+		sqlite3 "$placesFile" "delete from moz_keywords where place_id=${placeId};"
+	fi
+else
+	echo "Unknown action: $action"
+	exit 1
+fi

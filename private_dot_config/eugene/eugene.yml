@@ -3,7 +3,9 @@ handlers:
     remove: sudo apt purge --autoremove %s
     multiple: true
   - name: apt_repo
-    setup: sudo apt install wget
+    setup:
+      - when: grep -qi debian /etc/os-release
+        run: sudo apt install wget
     add: ${EUGENE_REPO}/bin/apt_repo add %s
     remove: ${EUGENE_REPO}/bin/apt_repo remove %s
     run_after_switch: sudo apt update
@@ -16,12 +18,16 @@ handlers:
     run_before_switch: echo "$(dpkg -l | wc -l) packages on system"
     run_after_switch: ${EUGENE_REPO}/bin/apt_pkgs
   - name: deb_pkgs
-    setup: sudo apt install wget
+    setup:
+      - when: grep -qi debian /etc/os-release
+        run: sudo apt install wget
     add: ${EUGENE_REPO}/bin/deb_pkgs add %s
     remove: ${EUGENE_REPO}/bin/deb_pkgs remove %s
     run_after_switch: ${EUGENE_REPO}/bin/deb_pkgs_overrides
   - name: flatpak
-    setup: sudo apt install flatpak && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    setup:
+      - when: grep -qi debian /etc/os-release
+        run: sudo apt install flatpak && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     add: flatpak install flathub --noninteractive %s
     remove: flatpak uninstall --noninteractive %s
     upgrade: flatpak update --noninteractive
@@ -43,3 +49,9 @@ handlers:
   - name: fonts
     add: ${EUGENE_REPO}/bin/fonts add %s
     remove: ${EUGENE_REPO}/bin/fonts remove %s
+  - name: ff_bookmarks
+    setup:
+      - when: grep -qi debian /etc/os-release
+        run: sudo apt install sqlite3
+    add: ${EUGENE_REPO}/bin/ff_bookmarks add %s
+    remove: ${EUGENE_REPO}/bin/ff_bookmarks remove %s
